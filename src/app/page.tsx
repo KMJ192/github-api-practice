@@ -1,7 +1,7 @@
-import IndexPage from '@src/pageContents/IndexPage/IndexPage';
+import GitRepoList from '@src/pageContents/GitRepoList/GitRepoList';
 
 async function Home() {
-  return <IndexPage />;
+  return <GitRepoList />;
 }
 
 export default Home;
