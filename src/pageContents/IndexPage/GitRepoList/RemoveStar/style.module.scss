@@ -1,0 +1,8 @@
+.remove-star {
+  background-color: #7fe67a;
+  border: 1px solid #7fe67a;
+  &:hover {
+    background-color: #5fc35a;
+    border: 1px solid #5fc35a;
+  }
+}

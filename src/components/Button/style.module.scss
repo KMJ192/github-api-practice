@@ -1,0 +1,18 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  &.loading {
+    cursor: not-allowed;
+    user-select: none;
+  }
+  &:hover {
+    background-color: rgb(236, 236, 236);
+  }
+}
