@@ -34,9 +34,12 @@ function GitRepoList() {
   const currSearch = useRef<string>('');
   const clickType = useRef<'init' | 'more'>('init');
   const [value, setValue] = useState('');
-
-  const { data, hasNextPage } = useGitRepositoryState();
   const [curClickIdx, setCurClickIdx] = useState(-1);
+  const { data, hasNextPage } = useGitRepositoryState();
+  const isLoadingList =
+    initGitRepoListLoadPending || moreGitRepoListLoadPending;
+  const isMoreBtn =
+    hasNextPage && !initGitRepoListLoadPending && !moreGitRepoListLoadPending;
 
   const onSearch = () => {
     if (value === '') {
@@ -79,6 +82,7 @@ function GitRepoList() {
                   className={cx('repo-info')}
                 >
                   <div>이름 : {edges.node.name}</div>
+                  <div>사용자 : {edges.node.owner.login}</div>
                   <div className={cx('desc')}>
                     설명 : {edges.node.description}
                   </div>
@@ -99,14 +103,8 @@ function GitRepoList() {
               );
             })}
         </div>
-        {(initGitRepoListLoadPending || moreGitRepoListLoadPending) && (
-          <div className={cx('loading')}>Loading...</div>
-        )}
-        {hasNextPage &&
-          !initGitRepoListLoadPending &&
-          !moreGitRepoListLoadPending && (
-            <Button onClick={onSearchMore}>더보기</Button>
-          )}
+        {isLoadingList && <div className={cx('loading')}>Loading...</div>}
+        {isMoreBtn && <Button onClick={onSearchMore}>더보기</Button>}
       </div>
       {gitRepoListQueryRef && (
         <RequestGitRepoList
