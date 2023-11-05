@@ -9,25 +9,6 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@cdkit/react-modules@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@cdkit/react-modules/-/react-modules-0.0.1.tgz#18fc142cec46e04d8a0d9e1a47db1a9e1793e1e3"
-  integrity sha512-1amUx7gTVJwIIlsyZswV9miOSC+VHmzRQdT6HhyT1VaJHdN+y9U2Xpw7KaqkkwJWorjCwAcWZom0/RrIVVvuIw==
-  dependencies:
-    react "^18.2.0"
-    react-dom "^18.2.0"
-    react-router-dom "^6.15.0"
-
-"@cdkit/react-ui@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@cdkit/react-ui/-/react-ui-0.0.1.tgz#d6cd4715ea469ef5a6374123e20519186d0f8090"
-  integrity sha512-ptuEW00gOqSIXb6vAMnR5ZtdoKD0fgNzO0D/LJ5k2hpqdeTe6tPCbl/a637RQv7T3z52OJm7PqY/kcv/dumeeQ==
-  dependencies:
-    "@cdkit/react-modules" "^0.0.1"
-    lodash "^4.17.21"
-    react "^18.2.0"
-    react-dom "^18.2.0"
-
 "@next/env@14.0.1":
   version "14.0.1"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-14.0.1.tgz#7d03c9042c205a320aef2ea3f83c2d16b6825563"
@@ -77,11 +58,6 @@
   version "14.0.1"
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-14.0.1.tgz#be3dd8b3729ec51c99ff04b51e2b235756d02b6e"
   integrity sha512-FFp3nOJ/5qSpeWT0BZQ+YE1pSMk4IMpkME/1DwKBwhg4mJLB9L+6EXuJi4JEwaJdl5iN+UUlmUD3IsR1kx5fAg==
-
-"@remix-run/router@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.11.0.tgz#e0e45ac3fff9d8a126916f166809825537e9f955"
-  integrity sha512-BHdhcWgeiudl91HvVa2wxqZjSHbheSgIiDvxrF1VjFzBzpTtuDPkOdOi3Iqvc08kXtFkLjhbS+ML9aM8mJS+wQ==
 
 "@swc/helpers@0.5.2":
   version "0.5.2"
@@ -561,7 +537,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-react-dom@^18, react-dom@^18.2.0:
+react-dom@^18:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -580,22 +556,7 @@ react-relay@^16.0.0:
     nullthrows "^1.1.1"
     relay-runtime "16.0.0"
 
-react-router-dom@^6.15.0:
-  version "6.18.0"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.18.0.tgz#0a50c167209d6e7bd2ed9de200a6579ea4fb1dca"
-  integrity sha512-Ubrue4+Ercc/BoDkFQfc6og5zRQ4A8YxSO3Knsne+eRbZ+IepAsK249XBH/XaFuOYOYr3L3r13CXTLvYt5JDjw==
-  dependencies:
-    "@remix-run/router" "1.11.0"
-    react-router "6.18.0"
-
-react-router@6.18.0:
-  version "6.18.0"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.18.0.tgz#32e2bedc318e095a48763b5ed7758e54034cd36a"
-  integrity sha512-vk2y7Dsy8wI02eRRaRmOs9g2o+aE72YCx5q9VasT1N9v+lrdB79tIqrjMfByHiY5+6aYkH2rUa5X839nwWGPDg==
-  dependencies:
-    "@remix-run/router" "1.11.0"
-
-react@^18, react@^18.2.0:
+react@^18:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
