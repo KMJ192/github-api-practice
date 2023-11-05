@@ -8,12 +8,17 @@ type Props = {
   children: React.ReactNode;
   className?: string;
   loading?: boolean;
+  disabled?: boolean;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-function Button({ loading, children, className, onClick }: Props) {
+function Button({ loading, disabled, children, className, onClick }: Props) {
   return (
-    <button className={cx('button', { loading }, className)} onClick={onClick}>
+    <button
+      className={cx('button', { loading }, className)}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {loading ? 'Loading...' : children}
     </button>
   );

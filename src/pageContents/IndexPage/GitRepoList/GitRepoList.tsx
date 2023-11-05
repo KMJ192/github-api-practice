@@ -31,19 +31,21 @@ function GitRepoList() {
 
   const currSearch = useRef<string>('');
   const clickType = useRef<'init' | 'more'>('init');
-  const searchRef = useRef<HTMLInputElement>(null);
+  const [value, setValue] = useState('');
 
   const { data, hasNextPage } = useGitRepositoryState();
   const [curClickIdx, setCurClickIdx] = useState(-1);
 
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+
   const onClickSearch = () => {
-    if (!searchRef.current || searchRef.current.value === '') {
+    if (value === '') {
       return;
     }
     clickType.current = 'init';
-    const search = searchRef.current;
-    currSearch.current = search.value;
-    search.value = '';
+    currSearch.current = value;
     initGitRepoListLoadQuery(currSearch.current);
     setCurClickIdx(-1);
   };
@@ -57,8 +59,10 @@ function GitRepoList() {
     <>
       <div className={cx('container')}>
         <div className={cx('input-box')}>
-          <input ref={searchRef}></input>
-          <Button onClick={onClickSearch}>검색</Button>
+          <input onChange={onChange} value={value}></input>
+          <Button onClick={onClickSearch} disabled={value === ''}>
+            검색
+          </Button>
         </div>
         <div className={cx('repo-list')}>
           {!initGitRepoListLoadPending &&
