@@ -15,8 +15,8 @@
 
 2. Github 토큰 추가
 
-1. .env 파일 생성
-1. Github 토큰 입력
+- 프로젝트 root 경로에 .env 파일 생성
+- .env 파일 내 Github 토큰 입력
 
 ```
 NEXT_PUBLIC_REACT_APP_GITHUB_AUTH_TOKEN=<Github-token>
