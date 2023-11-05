@@ -20,7 +20,9 @@ async function networkFetch(
 ): Promise<GraphQLResponse> {
   const token = process.env.NEXT_PUBLIC_REACT_APP_GITHUB_AUTH_TOKEN;
   if (!token) {
-    throw new Error('Requires a GitHub authentication token.');
+    throw new Error(
+      'Github 토큰이 필요합니다. (환경변수 설정 => .env파일 내 NEXT_PUBLIC_REACT_APP_GITHUB_AUTH_TOKEN=<Token> 설정)',
+    );
   }
 
   const response = await fetch(HTTP_ENDPOINT, {
@@ -37,13 +39,7 @@ async function networkFetch(
   });
   const json = await response.json();
   if (Array.isArray(json.errors)) {
-    throw new Error(
-      `Error fetching GraphQL query '${
-        request.name
-      }' with variables '${JSON.stringify(variables)}': ${JSON.stringify(
-        json.errors,
-      )}`,
-    );
+    throw new Error(`Network요청 오류 ${JSON.stringify(json.errors)}`);
   }
 
   return json;
