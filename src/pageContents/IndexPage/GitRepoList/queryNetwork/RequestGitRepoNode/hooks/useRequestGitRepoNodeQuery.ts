@@ -7,10 +7,15 @@ function useRequestGitRepoNodeQuery() {
     useQueryLoader<RequestGitRepoNodeQuery>(getGitRepoNodeQuery);
 
   const loadNode = (owner: string, name: string) => {
-    loadQuery({
-      owner,
-      name,
-    });
+    loadQuery(
+      {
+        owner,
+        name,
+      },
+      {
+        fetchPolicy: 'network-only',
+      },
+    );
   };
 
   return {

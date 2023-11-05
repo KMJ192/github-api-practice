@@ -1,5 +1,5 @@
 import { useTransition } from 'react';
-import { useQueryLoader } from 'react-relay';
+import { useQueryLoader, UseQueryLoaderLoadQueryOptions } from 'react-relay';
 import { getGitRepoListQuery } from '../RequestGitRepoList';
 import {
   RequestGitRepoListQuery,
@@ -22,7 +22,9 @@ function useRequestGitRepoListQuery() {
     };
 
     startInitLoadPending(() => {
-      loadQuery(variable);
+      loadQuery(variable, {
+        fetchPolicy: 'network-only',
+      });
     });
   };
 
@@ -32,7 +34,9 @@ function useRequestGitRepoListQuery() {
       after: lastCursor,
     };
     startMoreLoadPending(() => {
-      loadQuery(variable);
+      loadQuery(variable, {
+        fetchPolicy: 'network-only',
+      });
     });
   };
 

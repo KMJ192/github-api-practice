@@ -4,10 +4,10 @@ import Button from '@src/components/Button/Button';
 import GitStarBtn from './GitStarBtn/GitStarBtn';
 
 // Request API
-import RequestGitRepoList from './queryComponents/RequestGitRepoList/RequestGitRepoList';
-import useRequestGitRepoListQuery from './queryComponents/RequestGitRepoList/hooks/useRequestGitRepoListQuery';
-import RequestGitRepoNode from './queryComponents/RequestGitRepoNode/RequestGitRepoNode';
-import useRequestGitRepoNodeQuery from './queryComponents/RequestGitRepoNode/hooks/useRequestGitRepoNodeQuery';
+import RequestGitRepoList from './queryNetwork/RequestGitRepoList/RequestGitRepoList';
+import useRequestGitRepoListQuery from './queryNetwork/RequestGitRepoList/hooks/useRequestGitRepoListQuery';
+import RequestGitRepoNode from './queryNetwork/RequestGitRepoNode/RequestGitRepoNode';
+import useRequestGitRepoNodeQuery from './queryNetwork/RequestGitRepoNode/hooks/useRequestGitRepoNodeQuery';
 
 import { useGitRepositoryState } from '@src/store/GitRepository';
 
@@ -36,11 +36,7 @@ function GitRepoList() {
   const { data, hasNextPage } = useGitRepositoryState();
   const [curClickIdx, setCurClickIdx] = useState(-1);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-
-  const onClickSearch = () => {
+  const onSearch = () => {
     if (value === '') {
       return;
     }
@@ -50,17 +46,25 @@ function GitRepoList() {
     setCurClickIdx(-1);
   };
 
-  const onClickMore = () => {
+  const onSearchMore = () => {
     clickType.current = 'more';
     moreGitRepoListLoadQuery(currSearch.current);
+  };
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
   };
 
   return (
     <>
       <div className={cx('container')}>
         <div className={cx('input-box')}>
-          <input onChange={onChange} value={value}></input>
-          <Button onClick={onClickSearch} disabled={value === ''}>
+          <input
+            onChange={onChange}
+            value={value}
+            placeholder='검색할 저장소 이름을 입력해주세요.'
+          ></input>
+          <Button onClick={onSearch} disabled={value === ''}>
             검색
           </Button>
         </div>
@@ -99,7 +103,7 @@ function GitRepoList() {
         {hasNextPage &&
           !initGitRepoListLoadPending &&
           !moreGitRepoListLoadPending && (
-            <Button onClick={onClickMore}>더보기</Button>
+            <Button onClick={onSearchMore}>더보기</Button>
           )}
       </div>
       {gitRepoListQueryRef && (
