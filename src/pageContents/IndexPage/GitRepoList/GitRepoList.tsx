@@ -1,16 +1,15 @@
 import React, { useRef, useState } from 'react';
 
 import Button from '@src/components/Button/Button';
-import { useGitRepositoryState } from '@src/store/GitRepository';
-
-import RemoveStar from './RemoveStar/RemoveStar';
-import AddStar from './AddStar/AddStar';
+import GitStarBtn from './GitStarBtn/GitStarBtn';
 
 // Request API
 import RequestGitRepoList from './queryComponents/RequestGitRepoList/RequestGitRepoList';
 import useRequestGitRepoListQuery from './queryComponents/RequestGitRepoList/hooks/useRequestGitRepoListQuery';
 import RequestGitRepoNode from './queryComponents/RequestGitRepoNode/RequestGitRepoNode';
 import useRequestGitRepoNodeQuery from './queryComponents/RequestGitRepoNode/hooks/useRequestGitRepoNodeQuery';
+
+import { useGitRepositoryState } from '@src/store/GitRepository';
 
 import { formatNumberToK } from '@src/utils/utils';
 
@@ -73,34 +72,19 @@ function GitRepoList() {
                   <div className={cx('desc')}>
                     설명 : {edges.node.description}
                   </div>
-                  {edges.node.viewerHasStarred ? (
-                    <RemoveStar
-                      id={edges.node.id}
-                      owner={edges.node.owner.login}
-                      onLoad={() => {
-                        gitRepoNodeQueryLoad(
-                          edges.node.owner.login,
-                          edges.node.name,
-                        );
-                        setCurClickIdx(idx);
-                      }}
-                    >
-                      Star: {formatNumberToK(edges.node.stargazerCount)}
-                    </RemoveStar>
-                  ) : (
-                    <AddStar
-                      id={edges.node.id}
-                      onLoad={() => {
-                        gitRepoNodeQueryLoad(
-                          edges.node.owner.login,
-                          edges.node.name,
-                        );
-                        setCurClickIdx(idx);
-                      }}
-                    >
-                      Star: {formatNumberToK(edges.node.stargazerCount)}
-                    </AddStar>
-                  )}
+                  <GitStarBtn
+                    id={edges.node.id}
+                    viewerHasStarred={edges.node.viewerHasStarred}
+                    onLoad={() => {
+                      gitRepoNodeQueryLoad(
+                        edges.node.owner.login,
+                        edges.node.name,
+                      );
+                      setCurClickIdx(idx);
+                    }}
+                  >
+                    {formatNumberToK(edges.node.stargazerCount)}
+                  </GitStarBtn>
                 </div>
               );
             })}

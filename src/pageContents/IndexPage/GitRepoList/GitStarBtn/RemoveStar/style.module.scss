@@ -1,0 +1,12 @@
+.remove-star {
+  display: flex;
+  column-gap: 4px;
+  background-color: #d3d3d3;
+  width: fit-content;
+  min-width: 100px;
+  height: 42px;
+  font-size: 0.9rem;
+  &:hover {
+    background-color: #bebebe;
+  }
+}
