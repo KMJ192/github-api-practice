@@ -49,6 +49,7 @@ function GitRepoList() {
     currSearch.current = value;
     initGitRepoListLoadQuery(currSearch.current);
     setCurClickIdx(-1);
+    setValue('');
   };
 
   const onSearchMore = () => {
